@@ -17,3 +17,7 @@ The game has two players.<br> In a single round of the game, each player secretl
 `cd Rock-Paper-Scissors`<br>
 
 `python rps.py`<br>
+
+
+### Installation
+`pip install colorama`
