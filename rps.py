@@ -1,6 +1,11 @@
 import random
-# pip install colorama
-from colorama import init, Fore, Back, Style
+import subprocess
+try:
+    from colorama import init, Fore, Back, Style
+except Exception as e:
+    subprocess.check_call(
+        [sys.executable, "-m", "pip", "install", "colorama"])
+    from colorama import init, Fore, Back, Style
 
 """This program plays a game of Rock, Paper, Scissors between two Players,
 and reports both Player's scores each round."""
