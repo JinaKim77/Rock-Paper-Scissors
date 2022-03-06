@@ -1,4 +1,5 @@
 import random
+import sys
 import subprocess
 try:
     from colorama import init, Fore, Back, Style
@@ -160,7 +161,16 @@ class Game:
         init()
         print('\033[2;31;43m  Rock Paper Scissors  \033[0;0m')
         print(Fore.RED)
-        count = input('How many times do you want to play?\n')
+
+        # Check whether the number of rounds is a positive integer or not
+        while True:
+            count = input('How many times do you want to play?\n')
+            if count.isnumeric() is True:
+                if int(count) >= 1 :
+                    break
+            else:
+                print("Invalid input. Try again.\n")
+
         for round in range(int(count)):
             print(Fore.WHITE)
             print(f"\nRound {round+1}")
