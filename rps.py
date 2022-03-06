@@ -124,6 +124,25 @@ class CyclePlayer(Player):
             print(f"**PLAYER TWO : {self.score} WINS **")
 
 
+# The opponent player always plays the rock move.
+class RockPlayer(Player):
+    def __init__(self):
+        # To keep each object's score
+        self.score = 0
+        self.choice = "rock"
+
+    def move(self):
+        choice = self.choice
+        return choice
+
+    def learn(self, my_move, their_move):
+
+        if beats(my_move, their_move) is True:
+            self.score += 1
+            print(f"**PLAYER TWO : {self.score} WINS **")
+        return self.score
+
+
 # It tells whether one move beats another one.
 def beats(one, two):
     return ((one == 'rock' and two == 'scissors') or
@@ -166,7 +185,7 @@ class Game:
         while True:
             count = input('How many times do you want to play?\n')
             if count.isnumeric() is True:
-                if int(count) >= 1 :
+                if int(count) >= 1:
                     break
             else:
                 print("Invalid input. Try again.\n")
@@ -182,5 +201,5 @@ class Game:
 
 
 if __name__ == '__main__':
-    game = Game(HumanPlayer(), ReflectPlayer())
+    game = Game(HumanPlayer(), CyclePlayer())
     game.play_game()
